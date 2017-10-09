@@ -1,0 +1,25 @@
+<h1>New Resource</h1>
+
+<%= form_for @media_resource do |f| %>
+  <% if @media_resource.errors.any? %>
+    <div id="error_explanation">
+      <div class="alert alert-danger">
+        The form contains <%= pluralize(@media_resource.errors.count, "error") %>.
+      </div>
+      <ul>
+      <% @media_resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :name %>:
+  <%= f.text_field :name %>
+  <%= f.label :description %>:
+  <%= f.text_field :description %>
+  <%= f.label :url %>:
+  <%= f.text_field :url %>
+  <%= f.label :fields %>:
+  <%= f.text_field :fields, multiple: true %>
+  <%= f.submit %>
+<% end %>
