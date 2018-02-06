@@ -1,25 +1,35 @@
-<h1>New Resource</h1>
+<div class="container">
+  <h1>New Resource</h1>
 
-<%= form_for @media_resource do |f| %>
-  <% if @media_resource.errors.any? %>
-    <div id="error_explanation">
-      <div class="alert alert-danger">
-        The form contains <%= pluralize(@media_resource.errors.count, "error") %>.
+  <%= form_for @media_resource do |f| %>
+    <% if @media_resource.errors.any? %>
+      <div id="error_explanation">
+        <div class="alert alert-danger">
+          The form contains <%= pluralize(@media_resource.errors.count, "error") %>.
+        </div>
+        <ul>
+        <% @media_resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
       </div>
-      <ul>
-      <% @media_resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :name %>:
+      <%= f.text_field :name, class: 'form-control' %>
     </div>
+    <div class="form-group">
+      <%= f.label :description %>:
+      <%= f.text_field :description, class: 'form-control'%>
+    </div>
+    <div class="form-group">
+      <%= f.label :url %>:
+      <%= f.text_field :url, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :fields %>:
+      <%= f.text_field :fields, multiple: true, class: 'form-control' %>
+    </div>
+    <%= f.submit 'Save', class: 'btn btn-primary' %>
   <% end %>
-  <%= f.label :name %>:
-  <%= f.text_field :name %>
-  <%= f.label :description %>:
-  <%= f.text_field :description %>
-  <%= f.label :url %>:
-  <%= f.text_field :url %>
-  <%= f.label :fields %>:
-  <%= f.text_field :fields, multiple: true %>
-  <%= f.submit %>
-<% end %>
+</div>
