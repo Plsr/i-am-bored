@@ -3,6 +3,10 @@ class MediaResourcesController < ApplicationController
     @media_resource = MediaResource.new
   end
 
+  def show
+    @media_resource = MediaResource.find(params[:id])
+  end
+
   def create
     @media_resource = MediaResource.new(media_resource_params)
     if @media_resource.save
